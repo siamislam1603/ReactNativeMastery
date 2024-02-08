@@ -2,7 +2,15 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+
+## Run app on android device
+
+1. From root directory of the project folder go to terminal and type: `cd android`
+2. Then, type: `./gradlew assembleDebug`
+3. Then share the apk file to your android device `/android/app/build/outputs/apk/debug/app-debug.apk`
+4. Install the shared apk
+5. Shake android device, go to the settings and put the ipv4 address from the pc's `ipconfig`. e.g: `xxx.xxx.xx.xx:<dev server PORT>`
 
 ## Step 1: Start the Metro Server
 
