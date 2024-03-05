@@ -1,21 +1,14 @@
-import React, {useState} from 'react';
-import {Button, SafeAreaView, Text, View} from 'react-native';
+import React from 'react';
+import {SafeAreaView, ScrollView} from 'react-native';
+import FlatCards from './components/FlatCards';
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-
   return (
     // for notch
     <SafeAreaView>
-      <View>
-        <Text>Clicked: {counter}</Text>
-        <Button
-          onPress={() => {
-            setCounter(counter + 1);
-          }}
-          title="Press me"
-        />
-      </View>
+      <ScrollView>
+        <FlatCards />
+      </ScrollView>
     </SafeAreaView>
   );
 };
