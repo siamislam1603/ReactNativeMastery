@@ -1,11 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 
-export default function FlatCards() {
+export default function ElevatedCards() {
   return (
-    <View>
-      <Text style={styles.textHeading}>FlatCards</Text>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <Text style={styles.textHeading}>Elevated Cards</Text>
+      <ScrollView horizontal>
         {[...new Array(10)].map((_, i) => (
           <View
             key={i}
@@ -16,7 +16,7 @@ export default function FlatCards() {
             <Text>{i + 1}</Text>
           </View>
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -24,14 +24,11 @@ export default function FlatCards() {
 const styles = StyleSheet.create({
   textHeading: {
     fontSize: 24,
-    padding: 8,
+    paddingVertical: 8,
     fontWeight: 'bold',
   },
   container: {
-    flex: 1,
-    flexDirection: 'row',
-    gap: 8,
-    padding: 8,
+    paddingHorizontal: 8,
   },
   card: {
     width: 100,
@@ -39,6 +36,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    marginHorizontal: 4,
+    marginVertical: 8,
   },
   cardOdd: {
     backgroundColor: 'tomato',
