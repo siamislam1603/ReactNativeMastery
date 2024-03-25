@@ -1,12 +1,31 @@
 import {Ionicons} from '@expo/vector-icons'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
 import {Platform, SafeAreaView, StatusBar, StyleSheet} from 'react-native'
+import TweetDetailScreen from '../screens/homeStack/TweetDetailScreen'
 import Feed from '../screens/tabScreens/Feed'
 import Notifications from '../screens/tabScreens/Notifications'
 import Settings from '../screens/tabScreens/Settings'
 
+// Stack
+const HomeStack = createNativeStackNavigator()
+
+function HomeStackGroup() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Feed" component={Feed} />
+      <HomeStack.Screen
+        name="TweetDetailScreen"
+        component={TweetDetailScreen}
+        options={{presentation: 'modal'}}
+      />
+    </HomeStack.Navigator>
+  )
+}
+
+// Bottom Tabs
 const Tab = createBottomTabNavigator()
 
 function TabGroup() {
@@ -15,7 +34,7 @@ function TabGroup() {
       screenOptions={({route, navigation}) => ({
         tabBarIcon: ({size, color, focused}) => {
           let iconName
-          if (route.name === 'Feed') {
+          if (route.name === 'HomeStackGroup') {
             iconName = focused ? 'home' : 'home-outline'
           } else if (route.name === 'Settings') {
             iconName = focused ? 'settings' : 'settings-outline'
@@ -28,7 +47,11 @@ function TabGroup() {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Feed" component={Feed} />
+      <Tab.Screen
+        name="HomeStackGroup"
+        component={HomeStackGroup}
+        options={{tabBarLabel: 'Home', headerShown: false}}
+      />
       <Tab.Screen name="Settings" component={Settings} />
       <Tab.Screen name="Notifications" component={Notifications} />
     </Tab.Navigator>
