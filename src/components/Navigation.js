@@ -1,9 +1,11 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { Platform, SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import Payments from "../screens/drawerScreens/Payments";
 import TweetDetailScreen from "../screens/homeStack/TweetDetailScreen";
 import Feed from "../screens/tabScreens/Feed";
 import Notifications from "../screens/tabScreens/Notifications";
@@ -62,11 +64,27 @@ function TabGroup() {
   );
 }
 
+// Drawer Navigator
+const Drawer = createDrawerNavigator();
+
+function DrawerGroup() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen
+        name="HomeStackGroup"
+        component={HomeStackGroup}
+        options={{ headerShown: false, title: "Home" }}
+      />
+      <Drawer.Screen name="Payments" component={Payments} />
+    </Drawer.Navigator>
+  );
+}
+
 export default function Navigation() {
   return (
     <NavigationContainer>
       <SafeAreaView style={[styles.container]}>
-        <HomeStackGroup />
+        <DrawerGroup />
       </SafeAreaView>
     </NavigationContainer>
   );
