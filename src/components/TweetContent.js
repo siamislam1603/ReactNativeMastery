@@ -72,7 +72,7 @@ const GrayText = ({children, numberOfLines, style}) => {
 }
 
 const TweetContent = ({tweet}) => {
-  const theme = useColorScheme() === 'dark' ? 'light' : 'dark'
+  const theme = useColorScheme()
   return (
     <View style={styles.singleItem}>
       <View style={styles.row}>

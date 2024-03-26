@@ -1,66 +1,49 @@
-import {useNavigation} from '@react-navigation/native'
-import {useLayoutEffect} from 'react'
-import {FlatList, Image, Pressable, StyleSheet, View} from 'react-native'
-import {tweets} from '../../../data/tweets'
-import Tweet from '../../components/Tweet'
+import { FlatList, StyleSheet, View } from "react-native";
+import { tweets } from "../../../data/tweets";
+import Tweet from "../../components/Tweet";
 
 export default function Feed() {
-  const navigation = useNavigation()
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <Pressable onPress={() => navigation.openDrawer()}>
-          <Image
-            source={require('../../../assets/beto.jpeg')}
-            style={{width: 40, height: 40, borderRadius: 100, marginLeft: 15}}
-          />
-        </Pressable>
-      ),
-    })
-  }, [])
-
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={tweets.slice(0, 30)}
         keyExtractor={(item) => {
-          return item.id
+          return item.id;
         }}
-        renderItem={({item}) => {
-          return <Tweet tweet={item} />
+        renderItem={({ item }) => {
+          return <Tweet tweet={item} />;
         }}
         // ListHeaderComponent={() => (
         //   <View style={styles.header}>
         //     <Text style={styles.headerTitle}>New tweets available</Text>
         //   </View>
         // )}
-        ListHeaderComponentStyle={{backgroundColor: '#ccc'}}
+        ListHeaderComponentStyle={{ backgroundColor: "#ccc" }}
         ItemSeparatorComponent={() => <View style={styles.divider} />}
       />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   divider: {
-    width: '100%',
+    width: "100%",
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#DDD',
+    backgroundColor: "#DDD",
   },
   header: {
     height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#1DA1F2',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#1DA1F2",
   },
   footer: {
     height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   headerTitle: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     padding: 8,
     borderRadius: 12,
     fontSize: 12,
@@ -71,19 +54,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   emptyComponentTitle: {
-    color: 'black',
+    color: "black",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   emptyComponentSubtitle: {
-    color: '#808080',
+    color: "#808080",
     padding: 8,
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
   },
   emptyComponent: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
   },
-})
+});
