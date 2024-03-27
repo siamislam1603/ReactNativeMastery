@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Notifications = () => {
+const LoginScreen = () => {
   return (
     <View>
-      <Text>Notifications</Text>
+      <Text>LoginScreen</Text>
     </View>
   )
 }
 
-export default Notifications
+export default LoginScreen
